@@ -1,14 +1,17 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URI;
 
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -19,17 +22,21 @@ public class Forgewindow extends JFrame {
 
     private static final long serialVersionUID = 1L;
 
-    JLabel label, label1, label2, label3, label4, label5, label6, labela, labelb, labels, labelc, label7, label8, label9, label10, label11, label12, label13, label14, label15, label16, label17, label18, label19, label20, label21, label22;
+    JLabel label, label1, label2, label3, label4, label5, label6, labela, labelb, labels, labelc, label7, label8, label9, label10, label11, label12, label13, label14, label15, label16, label17, label18, label19, label20, label21, label22, label23, label24;
     JRadioButton b1, b2;
     ButtonGroup group;
+    JButton b, c, d;
+    JEditorPane editor;
 
-    public Forgewindow() {
+    public Forgewindow() throws Exception {
         super("Minecraft Forge Tutorial");
+
+        final URI uri = new URI("http://www.files.minecraftforge.net");
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(4, 4, 4, 4);
 
-        setSize(800, 600);
+        setSize(800, 700);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setBackground(Color.gray);
 
@@ -70,7 +77,7 @@ public class Forgewindow extends JFrame {
         group.add(b1);
         group.add(b2);
 
-        JButton b = new JButton("Exit");
+        b = new JButton("Exit");
 
         JButton c = new JButton("Next");
 
@@ -99,7 +106,7 @@ public class Forgewindow extends JFrame {
         labela = new JLabel("                                                        ");
         labelb = new JLabel("WINDOWS INSTALLATION:");
         label1 = new JLabel("Step 1: Run minecraft 1.6.1 from the new launcher. Let it get set up then press Quit Game.");
-        label2 = new JLabel("Step 2: Download the latest version of the minecraft forge installer from Http://www.files.minecraftforge.net.");
+        label2 = new JLabel("Step 2: Download the latest version of the minecraft forge installer from (Http://www.files.minecraftforge.net.)");
         label3 = new JLabel("Step 3: Run the Minecraft forge Installer and direct the path to your .minecraft folder(should be already done).");
         label4 = new JLabel("Step 4: Click ok and let the installer finish installing minecraft forge.");
         label5 = new JLabel("Step 5: Run the minecraft launcher. Click profiles and click forge. Run minecraft and let forge setup.");
@@ -122,6 +129,29 @@ public class Forgewindow extends JFrame {
         label20 = new JLabel("Step 4: Click ok and let the installer finish installing minecraft forge.");
         label21 = new JLabel("Step 5: Run the minecraft launcher. Click profiles and click forge. Run minecraft and let forge setup.");
         label22 = new JLabel("Step 6: Enjoy Minecraft forge.  To install other mods follow the directions of how to install them.");
+        label23 = new JLabel("---------------------------------------------------------------------------------------------------");
+        label24 = new JLabel("MINECRAFTFORGE WEBSITE");
+        d = new JButton("Minecraft forge");
+        d.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (Desktop.isDesktopSupported()) {
+                    Desktop desktop = Desktop.getDesktop();
+
+                    try {
+                        desktop.browse(uri);
+                    }
+                    catch (Exception ex) {
+
+                    }
+                }
+                else {
+
+                }
+            }
+
+        });
 
         p.add(b);
         p.add(c);
@@ -209,6 +239,13 @@ public class Forgewindow extends JFrame {
         p2.add(label22, gbc);
         gbc.gridx = 0;
         gbc.gridy = 27;
+        p2.add(label23, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 28;
+        p2.add(label24, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 29;
+        p2.add(d, gbc);
 
         p3.add(b1, gbc);
         gbc.gridx = 0;
